@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { useState } from "react";
 import { supabaseBrowser } from "@/lib/supabase/client";
 
@@ -27,7 +28,10 @@ export default function LoginPage() {
         <label className="label" htmlFor="email">Email</label>
         <input id="email" type="email" required className="field mb-3" value={email} onChange={(e) => setEmail(e.target.value)} />
         <label className="label" htmlFor="pw">Password</label>
-        <input id="pw" type="password" required className="field mb-4" value={password} onChange={(e) => setPassword(e.target.value)} />
+        <input id="pw" type="password" required className="field mb-2" value={password} onChange={(e) => setPassword(e.target.value)} />
+        <div className="mb-4 text-right">
+          <Link className="text-sm underline" href="/forgot-password">Forgot password?</Link>
+        </div>
         {error && <p className="mb-3 text-sm text-st-cancelled">{error}</p>}
         <button className="btn-primary w-full" disabled={busy}>{busy ? "Signing in..." : "Sign in"}</button>
         <p className="mt-4 text-xs text-muted">No account? Ask the IT or Sales admin to invite you.</p>
